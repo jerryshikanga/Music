@@ -56,10 +56,10 @@ class Admin extends CI_Controller
 		}
 	}
 
-	function downloads(){
+	function videos(){
 		if($this->session->userdata('logged_in'))
 		{
-			redirect("downloads/admin", 'refresh');
+			redirect("videos/admin", 'refresh');
 		}
 		else
 		{

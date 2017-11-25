@@ -25,5 +25,26 @@ class Audio_model extends BaseModel
 		$this->db->from('tbl_audio');
 		return $this->db->get()->result_array();
 	}
+
+	function getAllVideoData(){
+		$this->db->select('tbl_video.id, tbl_video.name, tbl_video.url, tbl_video.release_date, tbl_video.description, tbl_deleted_status.name as deleted_status, tbl_video.date_added');
+		$this->db->join('tbl_deleted_status', 'tbl_deleted_status.id=tbl_video.deleted_status');
+		$this->db->from('tbl_video');
+		return $this->db->get()->result();
+	}
+
+	function getVideoById($id){
+		$this->db->select('tbl_video.id, tbl_video.name, tbl_video.url, tbl_video.release_date, tbl_video.description, tbl_deleted_status.name as deleted_status, tbl_video.date_added');
+		$this->db->where('tbl_video.id', $id);
+		$this->db->join('tbl_deleted_status', 'tbl_deleted_status.id=tbl_video.deleted_status');
+		$this->db->from('tbl_video');
+		return $this->db->get()->row();
+	}
+
+	function getListStatus(){
+		$this->db->select('tbl_deleted_status.*');
+		$this->db->from('tbl_deleted_status');
+		return $this->db->get()->result();
+	}
 }
 ?>

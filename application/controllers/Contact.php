@@ -51,6 +51,7 @@ class Contact extends BaseController
 			$data['queries'] = $this->contact_model->getContactQueriesUnread();
 			$this->load->view('admin/includes/header');
 			$this->load->view('contact/queryList', $data);
+			// print_r($data['queries']->result());
 			$this->load->view('admin/includes/footer');
 		}
 		else
@@ -58,5 +59,55 @@ class Contact extends BaseController
 			redirect("users/login", 'refresh');
 		}
 	}
+
+	function sendBroadcastMail(){
+		$data['subject'] = $this->input->post('subject');
+		$data['message'] = $this->input->post('content');
+		$data['recipients'] = $this->contact_model->getAllMailSubscribers()->result();
+
+		if (!isset($data['subject'])||!isset($data['message'])) {
+			echo "All fields should be filled";
+		}
+		else if (sendEmail($data)) {
+			$this->contact_model->addBroadcast($data);
+			echo "Broadcast sent successfully";
+		}
+	}
+
+	function view_query($id=null)
+	{
+	if ($this->session->userdata('logged_in')) {
+		if (!isset($id)) {
+		 	$id = $this->input->post('id');
+		}
+		$data['query'] = $this->contact_model->getQueryByID($id);
+		$this->load->view('contact/view_query', $data); 
+	}
+	else 
+	{
+		redirect("users/login", 'refresh');
+	}
+	}
+
+	function sendResponseMail(){
+	if ($this->session->userdata('logged_in')) {
+		$data['qeury_id'] = $this->input->post('$qeury_id');
+		$data['subject'] = $this->input->post('subject');
+		$data['message'] = $this->input->post('message');
+		$data['email'] = $this->input->post('email');
+		if (!isset($data['qeury_id'])||!isset($data['subject'])||!isset($data['message'])||!isset($data['email'])) {
+			echo "All fields should be filled";
+		}
+		elseif (sendEmail($data)) {
+			$this->contact_model->addResponse($data);
+			echo "Response sent successfully";
+		}
+	}
+	else 
+	{
+		redirect("users/login", 'refresh');
+	}
+	}
+	
 }
 ?>

@@ -106,7 +106,7 @@ class Gallery extends BaseController
 
 			$insert_id = $this->images_model->saveImage($data);
 			if ($insert_id) {
-				$this->session->set_flashdata('last_insert', $insert_id);
+				$this->session->set_flashdata('last_insert_image_add', $insert_id);
 				outputJSON(null, true, "<div class='alert alert-success'><strong>".$data['name']."</strong> details added successfully. Upload image now</div>"); die();
 			} else {
 				outputJSON(null, false, "<div class='alert alert-warning'><strong>Failed to add ".$data['name']."</strong>.</div>"); die();
@@ -148,14 +148,14 @@ class Gallery extends BaseController
 	function uploadImage(){
 		if($this->session->userdata('logged_in'))
 		{
-			$imageId = $this->session->flashdata('last_insert');
+			$imageId = $this->session->flashdata('last_insert_image_add');
 			$name = "GalleryImage".$imageId;
 
 			$config['upload_path']          = './uploads/images/gallery/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 10000;
-            $config['max_width']            = 10240;
-            $config['max_height']           = 7680;
+            $config['max_size']             = 1000;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
             $config['file_name'] 			= $name;
 
             $this->load->library('upload', $config);

@@ -33,8 +33,8 @@ class Contact_model extends BaseModel
 	}
 
 	function getAllMailSubscribers(){
-		$this->db->select('tbl_contact_queries.*');
-		$this->db->from('tbl_contact_queries');
+		$this->db->select('tbl_mail_subscribers.email');
+		$this->db->from('tbl_mail_subscribers');
 		return $this->db->get();
 	}
 
@@ -57,6 +57,21 @@ class Contact_model extends BaseModel
 		$this->db->where('tbl_contact_queries.id', $id);
 		$this->db->from('tbl_contact_queries');
 		return $this->db->get()->row();
+	}
+
+	function addResponse($data){
+		$this->db->insert('tbl_query_responses', $data);
+		return $this->db->insert_id;
+	}
+
+	function addBroadcast($data){
+		if (!is_array($data['recipients'])) {
+			$data['recipients'] = array($data['recipients']);
+		}
+		$data['recipients'] = json_encode($data['recipients']);
+		
+		$this->db->insert('tbl_broadcast_mail', $data);
+		//return $this->db->insert_id;
 	}
 }
 ?>

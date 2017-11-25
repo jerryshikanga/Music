@@ -19,6 +19,7 @@ class BaseController extends CI_Controller
 		$data['email'] = $this->site_data_model->getSiteDataItemByName('email');
 		$data['location'] = $this->site_data_model->getSiteDataItemByName('location');
 		$data['header_banner_text'] = $this->site_data_model->getSiteDataItemByName('header_banner_text');
+		$data['header_banner_link'] = site_url($this->site_data_model->getSiteDataItemByName('header_banner_link'));
 		$data['site_title'] = $this->site_data_model->getSiteDataItemByName('site_title');
 		$data['site_header_title'] = $this->site_data_model->getSiteDataItemByName('site_header_title');
 

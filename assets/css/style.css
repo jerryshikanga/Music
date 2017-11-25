@@ -34,6 +34,17 @@ a:hover{
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
 }
+
+
+.title-text-bold-green {
+    padding-top: 5px; 
+    font-size: 2em;
+    font-weight: 400;
+    color: #00a78e;
+    margin: 0em 0em 0.34em 0em;
+    font-family: 'JockeyOne-Regular';
+}
+
 /*--header start here--*/
 .header {
   background: #00a78e;
@@ -86,14 +97,19 @@ span.menu {
   border-right: none;
 }
 /*--banner start here--*/
+.banner img {
+  width: 100%
+  height : 100%;
+}
+
 .banner {
-  background: url(../images/gro4.jpg)no-repeat;
+  background: url(../images/background/bannerback1.jpg)no-repeat;
   min-height: 800px;
   background-size: cover;
   position: relative;
 }
 .banner-two {
-  background: url(../images/gro4.jpg)no-repeat;
+  background: url(../images/background/bannerback1.jpg)no-repeat;
   min-height: 350px;
   background-size: cover;
 }
@@ -106,7 +122,7 @@ span.menu {
   font-family: 'FrederickatheGreat-Regular';
 }
 .bann-text {
-  padding: 3em 3em 3em 3em;
+  padding: 3em 3em 6em 3em;
   background-color: rgba(0, 0, 0, 0.47);
   width: 35%;
   position: absolute;
@@ -244,9 +260,9 @@ span.quote {
 	background: #F54785;
 	text-decoration:none;
 }
-.music-icn {
+.camera-icn {
   float: left;
-  width: 16%;
+  width: 13%;
   background: #F54785;
   text-align: center;
   margin: 4em 0em 0em 0em;
@@ -259,16 +275,26 @@ span.glyphicon.glyphicon-music {
 }
 /*--program end here--*/
 /*--strip start here--*/
-.music-strip {
-  background: url(../images/strip.jpg)no-repeat center;
-  min-height: 275px;
-  background-size: cover;
+/*.music-strip {
+  background-image:
+    linear-gradient(to right, transparent, mistyrose),  
+    url(../images/logo.png);
+  background-repeat: repeat-x;
+  
+  background-position: center;
+  background: linear-gradient:(0 0 0 2000px, rgb(191, 187, 187));
   padding: 3em 0em 3em 0em;
+}*/
+
+.music-strip {
+  background: linear-gradient( rgba(250, 250, 250, 0.7), rgba(250, 250, 250, 0.5) ), url(../images/logo.png);
+  background-size: 25% auto;
 }
+
 .music-strip-main h3 {
   font-size: 2.5em;
   font-weight: 400;
-  color: #fff;
+  color: #000000;
   margin: 0em 0em 0.3em 0em;
   font-family: 'JockeyOne-Regular';
 }
@@ -307,18 +333,22 @@ span.glyphicon.glyphicon-music {
 /*--strip end here--*/
 /*--features start here--*/
 .feature {
-  padding: 4em 0em 4em 0em;
+  padding: 10px 0em 5px 0em;
 }
+.feature-row{
+  margin-bottom: 15px;
+}
+
 .features-main h3 {
   text-align: center;
   font-size: 2.5em;
   font-weight: 400;
   color: #f54785;
-  margin: 0em 0em 1em 0em;
+  margin: 0em 0em 0em 0em;
   font-family: 'JockeyOne-Regular';
 }
 .fea-grid-bottom {
-  padding: 2em 0em 0em 0em;
+  padding: 0em 0em 1em 0em;
 }
 .fea-grid h5 {
   font-size: 1em;
@@ -1947,6 +1977,6 @@ h3.typo1 {
 }
 .page-header h3 {
   font-size: 1.8em;
-} 
+}
 }	
 /*--meadia quires end here--*/

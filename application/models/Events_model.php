@@ -5,7 +5,7 @@ include_once 'BaseModel.php';
 * 
 */
 class Events_model extends BaseModel
-{
+{ 
 	
 	function __construct()
 	{
@@ -41,7 +41,7 @@ class Events_model extends BaseModel
 		return $this->db->insert_id();
 	}
 
-	function update($id, $event){
+	function update($id, $event){ 
 		$this->db->where('tbl_events.id', $id);
 		return $this->db->update('tbl_events', $event);
 	}
